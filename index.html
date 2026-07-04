@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People's Priority Portal — Report. Rank. Resolve.</title>
+  <meta name="description" content="A civic platform where citizens log constituency issues and vote them into priority order for representatives to act on." />
+
+  <!-- Fonts: Fraunces (civic/editorial serif for headings) + Source Sans 3 (clean body/utility sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#top" class="brand">
+        <span class="brand__seal" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="34" height="34">
+            <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M24 10 L27 20 L37 20 L29 26 L32 36 L24 30 L16 36 L19 26 L11 20 L21 20 Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong>People's Priority</strong>
+          <em>Portal</em>
+        </span>
+      </a>
+
+      <nav class="navbar__links" aria-label="Primary">
+        <a href="#stats">Registry</a>
+        <a href="#submit">File an Issue</a>
+        <a href="#issues">Case Board</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <button id="darkModeToggle" class="icon-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <svg id="iconSun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg id="iconMoon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+        <a href="#submit" class="btn btn--primary btn--sm">File a Case</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="hero__grain" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <p class="eyebrow">Case Registry · Ward-Level Civic Reporting</p>
+        <h1 class="hero__title">
+          Every pothole, outage &amp;<br>
+          overdue fix — <span class="hero__title-accent">on the record.</span>
+        </h1>
+        <p class="hero__lede">
+          File a constituency issue in under a minute. Neighbors vote it up. Representatives
+          see exactly what matters most — ranked, timestamped, and impossible to ignore.
+        </p>
+        <div class="hero__cta-row">
+          <a href="#submit" class="btn btn--primary btn--lg">File an Issue</a>
+          <a href="#issues" class="btn btn--ghost btn--lg">View the Case Board</a>
+        </div>
+      </div>
+      <div class="hero__ledger" aria-hidden="true">
+        <div class="ledger-line"></div>
+        <div class="ledger-line"></div>
+        <div class="ledger-line"></div>
+      </div>
+    </section>
+
+    <!-- ===================== STATISTICS ===================== -->
+    <section class="stats" id="stats">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="eyebrow">Live Registry</p>
+          <h2>The docket, at a glance</h2>
+        </div>
+
+        <div class="stats__grid">
+          <div class="stat-card">
+            <span class="stat-card__label">Total Issues Filed</span>
+            <span class="stat-card__value" id="statTotalIssues">0</span>
+            <span class="stat-card__foot">open constituency cases</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">Total Votes Cast</span>
+            <span class="stat-card__value" id="statTotalVotes">0</span>
+            <span class="stat-card__foot">citizen endorsements</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__label">Top Category</span>
+            <span class="stat-card__value stat-card__value--text" id="statTopCategory">—</span>
+            <span class="stat-card__foot">most reported concern</span>
+          </div>
+          <div class="stat-card stat-card--highlight">
+            <span class="stat-card__label">Highest Priority Case</span>
+            <span class="stat-card__value stat-card__value--text" id="statTopIssue">—</span>
+            <span class="stat-card__foot" id="statTopIssueVotes">no cases yet</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ISSUE SUBMISSION FORM ===================== -->
+    <section class="submit" id="submit">
+      <div class="section-inner submit__grid">
+        <div class="submit__intro">
+          <p class="eyebrow">File a Case</p>
+          <h2>Put it on the record.</h2>
+          <p class="submit__intro-text">
+            Be specific about location and impact — clear filings get resolved faster and
+            rank higher once neighbors start voting.
+          </p>
+          <ul class="submit__tips">
+            <li>Name the exact street, block, or landmark.</li>
+            <li>Describe the impact, not just the problem.</li>
+            <li>Set priority honestly — it shapes the ranking.</li>
+          </ul>
+        </div>
+
+        <form id="issueForm" class="case-form" novalidate>
+          <div class="case-form__row">
+            <label for="issueTitle">Issue Title</label>
+            <input type="text" id="issueTitle" name="title" placeholder="e.g. Streetlight outage on 5th Cross" maxlength="90" required />
+          </div>
+
+          <div class="case-form__row case-form__row--split">
+            <div>
+              <label for="issueCategory">Category</label>
+              <select id="issueCategory" name="category" required>
+                <option value="" disabled selected>Select category</option>
+                <option value="Roads">Roads</option>
+                <option value="Water Supply">Water Supply</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+                <option value="Garbage">Garbage</option>
+                <option value="Drainage">Drainage</option>
+                <option value="Transport">Transport</option>
+                <option value="Public Safety">Public Safety</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="issuePriority">Priority</label>
+              <select id="issuePriority" name="priority" required>
+                <option value="" disabled selected>Select priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="case-form__row">
+            <label for="issueLocation">Location</label>
+            <input type="text" id="issueLocation" name="location" placeholder="e.g. Ward 12, Near Central Market" maxlength="90" required />
+          </div>
+
+          <div class="case-form__row">
+            <label for="issueDescription">Description</label>
+            <textarea id="issueDescription" name="description" rows="4" placeholder="What's happening, since when, and who does it affect?" maxlength="500" required></textarea>
+            <span class="char-count"><span id="descCount">0</span>/500</span>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            Submit Issue
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== ISSUE BOARD ===================== -->
+    <section class="board" id="issues">
+      <div class="section-inner">
+        <div class="section-head section-head--row">
+          <div>
+            <p class="eyebrow">Case Board</p>
+            <h2>Ranked by the people</h2>
+          </div>
+        </div>
+
+        <div class="board__controls">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="searchInput" placeholder="Search by title, location, or description…" />
+          </div>
+
+          <select id="categoryFilter" class="control-select">
+            <option value="All">All Categories</option>
+            <option value="Roads">Roads</option>
+            <option value="Water Supply">Water Supply</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Garbage">Garbage</option>
+            <option value="Drainage">Drainage</option>
+            <option value="Transport">Transport</option>
+            <option value="Public Safety">Public Safety</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <select id="sortSelect" class="control-select">
+            <option value="votes">Sort: Highest Votes</option>
+            <option value="newest">Sort: Newest First</option>
+            <option value="priority">Sort: Priority</option>
+          </select>
+        </div>
+
+        <div id="issueList" class="issue-grid"><!-- Issue cards injected by JS --></div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6M9 16h6M9 8h1"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+          <h3>The docket is empty</h3>
+          <p>No cases match right now. File the first issue, or clear your search and filters.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="section-inner site-footer__inner">
+      <div class="site-footer__brand">
+        <span class="brand__seal" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="28" height="28">
+            <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M24 10 L27 20 L37 20 L29 26 L32 36 L24 30 L16 36 L19 26 L11 20 L21 20 Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <div>
+          <strong>People's Priority Portal</strong>
+          <p>A public case registry, built for constituents.</p>
+        </div>
+      </div>
+      <p class="site-footer__meta">Data is stored locally in your browser · No servers, no tracking · Hackathon build, 2026</p>
+    </div>
+  </footer>
+
+  <!-- Toast notification container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Delete confirmation modal -->
+  <div id="confirmModal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <h3 id="confirmTitle">Withdraw this case?</h3>
+      <p>This removes the issue from the registry permanently. This can't be undone.</p>
+      <div class="modal__actions">
+        <button id="confirmCancel" class="btn btn--ghost">Keep Case</button>
+        <button id="confirmDelete" class="btn btn--danger">Withdraw Case</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
