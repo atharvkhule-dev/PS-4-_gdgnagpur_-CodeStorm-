@@ -1,4 +1,4 @@
-ps-4-gdgnagpur-code-storm.vercel.app
+[ps-4-gdgnagpur-code-storm.vercel.app](https://ps-4-gdgnagpur-code-storm.vercel.app/)
 # People's Priority Portal
 
 A centralized, no-backend civic platform where citizens file constituency issues and vote them into priority order, so representatives can see at a glance what their ward actually cares about.
